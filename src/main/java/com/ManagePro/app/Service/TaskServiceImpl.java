@@ -30,7 +30,6 @@ public class TaskServiceImpl implements TaskService{
 	public List<Task> getAllTask() {
 		
 		List<Task> taskList=taskrepo.findAll();
-		
 		return taskList;
 		}
 
@@ -45,6 +44,42 @@ public class TaskServiceImpl implements TaskService{
 		newTask.setTaskID(id);
 		taskrepo.save(newTask);
         return "task update successfully";
+	}
+
+	@Override
+	public List<Task> getClosedTask() {
+		List<Task> taskList=taskrepo.getClosedTask();
+		return taskList;
+	}
+
+	@Override
+	public List<Task> getOpenTask() {
+		List<Task> taskList=taskrepo.getOpenTask();
+		return taskList;
+	}
+
+	@Override
+	public List<Task> getHighTask() {
+		List<Task> taskList=taskrepo.getHighTask();
+		return taskList;
+	}
+
+	@Override
+	public List<Task> getLowTask() {
+		List<Task> taskList=taskrepo.getLowTask();
+		return taskList;
+	}
+
+	@Override
+	public List<Task> getMediumTask() {
+		List<Task> taskList=taskrepo.getMediumTask();
+		return taskList;
+	}
+
+	@Override
+	public List<Task> getMyTask() {
+		List<Task> taskList=taskrepo.getMyTask(null);
+		return taskList;
 	}
 	
 

@@ -24,9 +24,39 @@ public class TaskController {
     	return "this Application Run";
     }
 
-    @GetMapping("/tasks") 
+    @GetMapping("/getAllTasks") 
     public List<Task> getAllTask() { 
         return taskService.getAllTask();
+    }
+    
+    
+    @GetMapping("/getClosedTask") 
+    public List<Task> getClosedTask() { 
+        return taskService.getClosedTask();
+    }
+    
+    
+    
+    @GetMapping("/getOpenTask") 
+    public List<Task> getOpenTask() { 
+        return taskService.getOpenTask();
+    }
+    
+    
+    @GetMapping("/getLowTask") 
+    public List<Task> getLowTask() { 
+        return taskService.getLowTask();
+    }
+    
+    
+    @GetMapping("/getHighTasks") 
+    public List<Task> getHighTask() { 
+        return taskService.getHighTask();
+    }
+    
+    @GetMapping("/getMediumTasks") 
+    public List<Task> getMediumTask() { 
+        return taskService.getHighTask();
     }
 
     @GetMapping("tasks/{id}")
@@ -36,16 +66,18 @@ public class TaskController {
     }
     
 	
-	@PostMapping("/tasks")
+	@PostMapping("/addTask")
 	public Task addTask( @RequestBody Task task) {
 		return taskService.addTask(task);
 	}
 	 
 
-    @PutMapping("/tasks/{id}")
-    public String updateTask( @PathVariable  long id, @RequestBody Task newTask) {
+    @PostMapping("editTasks/{id}")
+    public Task updateTask( @PathVariable  long id, @RequestBody Task newTask) {
+    	System.out.println(newTask.getCreatedDate());
     	taskService.updateTask(id, newTask);
-    	return "task update Sucessfully";
+    	
+    	return newTask ;
     }
 
     @DeleteMapping("/tasks/{id}")
