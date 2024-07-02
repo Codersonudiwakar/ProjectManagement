@@ -30,20 +30,20 @@ public class TaskController {
     }
     
     
-    @GetMapping("/getClosedTask") 
+    @GetMapping("/getClosedTasks") 
     public List<Task> getClosedTask() { 
         return taskService.getClosedTask();
     }
     
     
     
-    @GetMapping("/getOpenTask") 
+    @GetMapping("/getOpenTasks") 
     public List<Task> getOpenTask() { 
         return taskService.getOpenTask();
     }
     
     
-    @GetMapping("/getLowTask") 
+    @GetMapping("/getLowTasks") 
     public List<Task> getLowTask() { 
         return taskService.getLowTask();
     }
@@ -59,7 +59,7 @@ public class TaskController {
         return taskService.getHighTask();
     }
 
-    @GetMapping("tasks/{id}")
+    @GetMapping("/getOneTask/{id}")
     public Task getTaskById(@PathVariable long id) {
         Task task = taskService.getTaskById(id);
         return task;
@@ -76,7 +76,6 @@ public class TaskController {
     public Task updateTask( @PathVariable  long id, @RequestBody Task newTask) {
     	System.out.println(newTask.getCreatedDate());
     	taskService.updateTask(id, newTask);
-    	
     	return newTask ;
     }
 
