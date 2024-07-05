@@ -29,9 +29,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<User> getAllUsers() {
+	public List<User> getAllUsersByUsername(String Username) {
 		// TODO Auto-generated method stub
-		List<User> userList=userRepo.findAll();
+		List<User> userList=userRepo.getUserByUserName(Username);
 		return userList;
 	}
 

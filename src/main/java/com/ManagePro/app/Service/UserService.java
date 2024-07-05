@@ -10,7 +10,7 @@ public interface UserService {
 
 	public User getUserById(long id);
 
-	public List<User> getAllUsers();
+	public List<User> getAllUsersByUsername(String Username);
 
 
 
