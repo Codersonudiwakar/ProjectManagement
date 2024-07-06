@@ -18,6 +18,7 @@ public class TaskServiceImpl implements TaskService{
 
 	@Override
 	public Task addTask(Task task) {
+		task.setCurrentStatus("Create");
 		return taskrepo.save(task);
 	}
 
