@@ -72,13 +72,13 @@ public class TaskController {
 	}
 	 
 
-    @PostMapping("editTasks/{id}")
+    @PutMapping("editTask/{id}")
     public Task updateTask( @PathVariable  long id, @RequestBody Task newTask) {
     	System.out.println(newTask.getCreatedDate());
     	taskService.updateTask(id, newTask);
     	return newTask ;
     }
-
+ 
     @DeleteMapping("/tasks/{id}")
     public String deleteTask(@PathVariable long id) {
     	taskService.deleteTask(id);
