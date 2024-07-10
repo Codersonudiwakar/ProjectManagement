@@ -3,10 +3,13 @@ package com.ManagePro.app.entities;
 import java.sql.Timestamp;
 import java.time.Instant;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 
 @Entity
@@ -23,7 +26,10 @@ public class Task {
     private Timestamp createdDate;
     private String taskType;
     private String taskPriority;
-    private String taskPoing;
+    private String taskPoint;
+    @OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "c_Id")
+    private Comments comment;
 
     @PrePersist
     protected void onCreate() {
@@ -83,10 +89,10 @@ public class Task {
     public void setTaskPriority(String taskPriority) {
         this.taskPriority = taskPriority;
     }
-    public String getTaskPoing() {
-        return taskPoing;
+    public String getTaskPoint() {
+        return taskPoint;
     }
-    public void setTaskPoing(String taskPoing) {
-        this.taskPoing = taskPoing;
+    public void setTaskPoing(String taskPoint) {
+        this.taskPoint = taskPoint;
     }
 }
