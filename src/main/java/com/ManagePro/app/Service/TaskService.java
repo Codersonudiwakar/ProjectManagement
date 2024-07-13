@@ -30,5 +30,9 @@ public interface TaskService {
 	public List<Task> getMediumTask();
 
 	public List<Task> getMyTask();
+	
+	public String editAssigneUser(long id, Task newTask);
+	
+	
 
 }

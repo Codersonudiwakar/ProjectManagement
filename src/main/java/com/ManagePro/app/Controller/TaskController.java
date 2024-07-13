@@ -65,14 +65,13 @@ public class TaskController {
         return task;
     }
     
-	
 	@PostMapping("/addTask")
 	public Task addTask( @RequestBody Task task) {
 		return taskService.addTask(task);
 	}
 	 
 
-    @PutMapping("editTask/{id}")
+    @PatchMapping("editTask/{id}")
     public Task updateTask( @PathVariable  long id, @RequestBody Task newTask) {
     	System.out.println(newTask.getCreatedDate());
     	taskService.updateTask(id, newTask);

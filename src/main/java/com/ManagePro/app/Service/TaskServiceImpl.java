@@ -1,6 +1,7 @@
 package com.ManagePro.app.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,7 @@ public class TaskServiceImpl implements TaskService{
 	@Override
 	public String updateTask(long id, Task newTask) {
 		newTask.setTaskID(id);
+		Task dataTask=taskrepo.getTask(id);
 		taskrepo.save(newTask);
         return "task update successfully";
 	}
@@ -82,6 +84,12 @@ public class TaskServiceImpl implements TaskService{
 		List<Task> taskList=taskrepo.getMyTask(null);
 		return taskList;
 	}
+	
+    @Override
+	public String editAssigneUser(long id, Task newTask) {
+    	return "User Edited Success";
+    }
+
 	
 
 }

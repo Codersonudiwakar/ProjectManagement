@@ -29,6 +29,9 @@ public interface TaskRepository extends JpaRepository<Task, Long>{
 
     @Query(value = "SELECT * FROM Task WHERE assigned_user = :username", nativeQuery = true)
     List<Task> getMyTask(@Param("username") String username);
+    
+    @Query(value = "SELECT * FROM Task WHERE taskid = :id",nativeQuery = true)
+    Task getTask(long id);
 	 
 
 }
