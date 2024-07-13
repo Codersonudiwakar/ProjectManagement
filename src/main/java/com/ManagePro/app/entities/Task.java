@@ -24,7 +24,15 @@ public class Task {
     private String assigneUser;
     private String currentStatus;
     private Timestamp closedDate;
-    private Timestamp createdDate;
+    public Timestamp getClosedDate() {
+		return closedDate;
+	}
+
+	public void setClosedDate(Timestamp closedDate) {
+		this.closedDate = closedDate;
+	}
+
+	private Timestamp createdDate;
     private String taskType;
     private String taskPriority;
     private String taskPoint;
