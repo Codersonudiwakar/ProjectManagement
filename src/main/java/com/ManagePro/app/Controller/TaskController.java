@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import com.ManagePro.app.Dto.TaskDto;
 import com.ManagePro.app.Service.TaskService;
 import com.ManagePro.app.entities.Task;
 
@@ -25,57 +26,57 @@ public class TaskController {
     }
 
     @GetMapping("/getAllTasks") 
-    public List<Task> getAllTask() { 
+    public List<TaskDto> getAllTask() { 
         return taskService.getAllTask();
     }
     
     
     @GetMapping("/getClosedTasks") 
-    public List<Task> getClosedTask() { 
+    public List<TaskDto> getClosedTask() { 
         return taskService.getClosedTask();
     }
     
     
     
     @GetMapping("/getOpenTasks") 
-    public List<Task> getOpenTask() { 
+    public List<TaskDto> getOpenTask() { 
         return taskService.getOpenTask();
     }
     
     
     @GetMapping("/getLowTasks") 
-    public List<Task> getLowTask() { 
+    public List<TaskDto> getLowTask() { 
         return taskService.getLowTask();
     }
     
     
     @GetMapping("/getHighTasks") 
-    public List<Task> getHighTask() { 
+    public List<TaskDto> getHighTask() { 
         return taskService.getHighTask();
     }
     
     @GetMapping("/getMediumTasks") 
-    public List<Task> getMediumTask() { 
+    public List<TaskDto> getMediumTask() { 
         return taskService.getHighTask();
     }
 
     @GetMapping("/getOneTask/{id}")
-    public Task getTaskById(@PathVariable long id) {
-        Task task = taskService.getTaskById(id);
+    public TaskDto getTaskById(@PathVariable long id) {
+    	TaskDto task = taskService.getTaskById(id);
         return task;
     }
     
 	@PostMapping("/addTask")
-	public Task addTask( @RequestBody Task task) {
+	public Task addTask( @RequestBody TaskDto task) {
 		return taskService.addTask(task);
 	}
 	 
 
     @PatchMapping("editTask/{id}")
-    public Task updateTask( @PathVariable  long id, @RequestBody Task newTask) {
-    	System.out.println(newTask.getCreatedDate());
-    	taskService.updateTask(id, newTask);
-    	return newTask ;
+    public String updateTask( @PathVariable  long id, @RequestBody TaskDto newTask) {
+     taskService.updateTask(id, newTask);
+    	
+    	return "Task Updated Successfully" ;
     }
  
     @DeleteMapping("/tasks/{id}")

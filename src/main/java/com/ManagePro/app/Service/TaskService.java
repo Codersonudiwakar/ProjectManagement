@@ -5,33 +5,34 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.ManagePro.app.Dto.TaskDto;
 import com.ManagePro.app.entities.Task;
 
 public interface TaskService {
 
-	public Task addTask(Task task);
+	public Task addTask(TaskDto taskDto);
 
-	public Task getTaskById(long id);
+	public TaskDto getTaskById(long id);
 
-	public List<Task> getAllTask();
+	public List<TaskDto> getAllTask();
 
 	public String deleteTask(long id);
 
-	public String updateTask(long id, Task newTask);
+	public String updateTask(long id, TaskDto newTask);
 
-	public List<Task> getClosedTask();
+	public List<TaskDto> getClosedTask();
 
-	public List<Task> getOpenTask();
+	public List<TaskDto> getOpenTask();
 
-	public List<Task> getHighTask();
+	public List<TaskDto> getHighTask();
 
-	public List<Task> getLowTask();
+	public List<TaskDto> getLowTask();
 
-	public List<Task> getMediumTask();
+	public List<TaskDto> getMediumTask();
 
-	public List<Task> getMyTask();
+	public List<TaskDto> getMyTask();
 	
-	public String editAssigneUser(long id, Task newTask);
+	public String editAssigneUser(long id, TaskDto newTask);
 	
 	
 
