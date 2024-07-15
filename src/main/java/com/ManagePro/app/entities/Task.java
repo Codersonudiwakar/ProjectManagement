@@ -21,39 +21,57 @@ public class Task {
     private String taskTitle;
     private String taskDescription;
     private String reporterUser;
-    private String assigneUser;
+    private String assigneeUser;
     private String currentStatus;
     private Timestamp closedDate;
-    public Timestamp getClosedDate() {
+    private Timestamp createdDate;
+    private String taskType;
+    private String taskPriority;
+    private String taskPoint;
+    private String taskEnvoirment;
+    
+    public String getTaskEnvoirment() {
+		return taskEnvoirment;
+	}
+
+	public void setTaskEnvoirment(String taskEnvoirment) {
+		this.taskEnvoirment = taskEnvoirment;
+	}
+
+	public void setAssigneeUser(String assigneeUser) {
+		this.assigneeUser = assigneeUser;
+	}
+
+	public Task(long taskID, String taskTitle, String taskDescription, String reporterUser, String assigneeUser,
+			String currentStatus, Timestamp closedDate, Timestamp createdDate, String taskType, String taskPriority,
+			String taskPoint, String taskEnvoirment) {
+		super();
+		this.taskID = taskID;
+		this.taskTitle = taskTitle;
+		this.taskDescription = taskDescription;
+		this.reporterUser = reporterUser;
+		this.assigneeUser = assigneeUser;
+		this.currentStatus = currentStatus;
+		this.closedDate = closedDate;
+		this.createdDate = createdDate;
+		this.taskType = taskType;
+		this.taskPriority = taskPriority;
+		this.taskPoint = taskPoint;
+		this.taskEnvoirment = taskEnvoirment;
+	}
+
+	public Timestamp getClosedDate() {
 		return closedDate;
 	}
 
 	public void setClosedDate(Timestamp closedDate) {
 		this.closedDate = closedDate;
 	}
-
-	private Timestamp createdDate;
-    private String taskType;
-    private String taskPriority;
-    private String taskPoint;
+;
+	
 
     public Task() {
 		super();
-	}
-
-	public Task(long taskID, String taskTitle, String taskDescription, String reporterUser, String assigneUser,
-			String currentStatus, Timestamp createdDate, String taskType, String taskPriority, String taskPoint) {
-		super();
-		this.taskID = taskID;
-		this.taskTitle = taskTitle;
-		this.taskDescription = taskDescription;
-		this.reporterUser = reporterUser;
-		this.assigneUser = assigneUser;
-		this.currentStatus = currentStatus;
-		this.createdDate = createdDate;
-		this.taskType = taskType;
-		this.taskPriority = taskPriority;
-		this.taskPoint = taskPoint;
 	}
 	
 	@PrePersist
@@ -95,12 +113,12 @@ public class Task {
 		this.reporterUser = reporterUser;
 	}
 
-	public String getAssigneUser() {
-		return assigneUser;
+	public String getAssigneeUser() {
+		return assigneeUser;
 	}
 
-	public void setAssigneUser(String assigneUser) {
-		this.assigneUser = assigneUser;
+	public void setAssigneUser(String assigneeUser) {
+		this.assigneeUser = assigneeUser;
 	}
 
 	public String getCurrentStatus() {

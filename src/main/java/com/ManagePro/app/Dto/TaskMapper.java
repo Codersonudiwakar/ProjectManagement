@@ -1,7 +1,13 @@
 package com.ManagePro.app.Dto;
 
+
+
+import org.springframework.stereotype.Component;
+
 import com.ManagePro.app.entities.Task;
 
+
+@Component
 public class TaskMapper {
 	
     public static TaskDto toDTO(Task entity) {
@@ -14,13 +20,14 @@ public class TaskMapper {
         dto.setTaskTitle(entity.getTaskTitle());
         dto.setTaskDescription(entity.getTaskDescription());
         dto.setReporterUser(entity.getReporterUser());
-        dto.setAssigneeUser(entity.getAssigneUser());
+        dto.setAssigneeUser(entity.getAssigneeUser());
         dto.setCurrentStatus(entity.getCurrentStatus());
         dto.setClosedDate(entity.getClosedDate());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setTaskType(entity.getTaskType());
         dto.setTaskPriority(entity.getTaskPriority());
         dto.setTaskPoint(entity.getTaskPoint());
+        dto.setTaskEnvoirment(entity.getTaskEnvoirment());
 
         return dto;
     }
@@ -42,6 +49,7 @@ public class TaskMapper {
         entity.setTaskType(dto.getTaskType());
         entity.setTaskPriority(dto.getTaskPriority());
         entity.setTaskPoint(dto.getTaskPoint());
+        entity.setTaskEnvoirment(dto.getTaskEnvoirment());
 
         return entity;
     }

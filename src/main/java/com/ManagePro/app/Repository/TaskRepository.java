@@ -15,7 +15,7 @@ public interface TaskRepository extends JpaRepository<Task, Long>{
     @Query(value = "SELECT * FROM Task WHERE current_status = 'Closed'", nativeQuery = true)
     List<Task> getClosedTask();
     
-    @Query(value = "SELECT * FROM Task WHERE current_status = 'Open'", nativeQuery = true)
+    @Query(value = "SELECT * FROM Task WHERE current_status != 'Closed'", nativeQuery = true)
     List<Task> getOpenTask();
 
     @Query(value = "SELECT * FROM Task WHERE task_priority = 'High'", nativeQuery = true)
@@ -32,6 +32,4 @@ public interface TaskRepository extends JpaRepository<Task, Long>{
     
     @Query(value = "SELECT * FROM Task WHERE taskid = :id",nativeQuery = true)
     Task getTask(long id);
-	 
-
 }

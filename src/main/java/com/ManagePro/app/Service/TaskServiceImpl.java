@@ -13,6 +13,8 @@ import com.ManagePro.app.Repository.TaskRepository;
 import com.ManagePro.app.entities.Task;
 import com.ManagePro.app.exceptionhandler.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 
 
 @Service
@@ -26,7 +28,7 @@ public class TaskServiceImpl implements TaskService{
 
 	@Override
 	public Task addTask(TaskDto task) {
-		task.setCurrentStatus("Create");
+		task.setCurrentStatus("create");
 		Task taskData=maper.toEntity(task);
 		return taskrepo.save(taskData);
 	}
@@ -56,9 +58,52 @@ public class TaskServiceImpl implements TaskService{
 	}
 
 	@Override
-	public String updateTask(long id, TaskDto newTask) {
-		newTask.setTaskID(id);
-		Task dataTask=maper.toEntity(newTask);
+	public String updateTask(long id, TaskDto updatedTask) {
+		updatedTask.setTaskID(id);
+		Optional<Task> optionalTask = taskrepo.findById(id);
+		if (optionalTask.isEmpty()) {
+            throw new EntityNotFoundException("Task not found");
+        }
+
+        Task existingTask = optionalTask.get();
+		if (updatedTask.getTaskTitle()==null) {
+			updatedTask.setTaskTitle(existingTask.getTaskTitle());
+        }
+        if (updatedTask.getTaskDescription()== null) {
+        	updatedTask.setTaskDescription(existingTask.getTaskDescription());
+        }
+        if (updatedTask.getReporterUser() == null) {
+        	updatedTask.setReporterUser(existingTask.getReporterUser());
+        }
+        if (updatedTask.getAssigneeUser() == null) {
+        	updatedTask.setAssigneeUser(existingTask.getAssigneeUser());
+        }
+        if (updatedTask.getCurrentStatus() == null) {
+        	updatedTask.setCurrentStatus(existingTask.getCurrentStatus());
+        }
+        if (updatedTask.getClosedDate() == null) {
+        	updatedTask.setClosedDate(existingTask.getClosedDate());
+        }
+        if (updatedTask.getCreatedDate() == null) {
+        	updatedTask.setCreatedDate(existingTask.getCreatedDate());
+        }
+        if (updatedTask.getTaskType() == null) {
+        	updatedTask.setTaskType(existingTask.getTaskType());
+        }
+        if (updatedTask.getTaskPriority() == null) {
+        	updatedTask.setTaskPriority(existingTask.getTaskPriority());
+        }
+        if (updatedTask.getTaskPoint() == null) {
+        	updatedTask.setTaskPoint(existingTask.getTaskPoint());
+        }
+        if (updatedTask.getTaskEnvoirment() == null) {
+        	updatedTask.setTaskEnvoirment(existingTask.getTaskEnvoirment());
+        }
+		
+		
+		
+		
+        Task dataTask=maper.toEntity(updatedTask);
 		taskrepo.save(dataTask);
         return "task update successfully";
 	}
