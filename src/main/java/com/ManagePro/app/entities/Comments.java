@@ -31,7 +31,6 @@ public class Comments {
 	   
 	public Comments() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Comments(long commentID, long taskID, String comments, Timestamp createdDate, String commentUsername) {

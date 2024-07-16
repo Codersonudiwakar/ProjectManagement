@@ -4,6 +4,7 @@ package com.ManagePro.app.Dto;
 
 import org.springframework.stereotype.Component;
 
+import com.ManagePro.app.entities.Comments;
 import com.ManagePro.app.entities.Task;
 
 
@@ -51,6 +52,27 @@ public class TaskMapper {
         entity.setTaskPoint(dto.getTaskPoint());
         entity.setTaskEnvoirment(dto.getTaskEnvoirment());
 
+        return entity;
+    }
+    
+    public static CommentsDto entityToDtoComments(Comments entity) {
+    	CommentsDto dto = new CommentsDto();
+        dto.setCommentID(entity.getCommentID());
+        dto.setTaskID(entity.getTaskID());
+        dto.setComments(entity.getComments());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setCommentUsername(entity.getCommentUsername());
+        return dto;
+    }
+
+    // DTO to Entity
+    public static Comments dtoToEntityComments(CommentsDto dto) {
+    	Comments entity = new Comments();
+        entity.setCommentID(dto.getCommentID());
+        entity.setTaskID(dto.getTaskID());
+        entity.setComments(dto.getComments());
+        entity.setCreatedDate(dto.getCreatedDate());
+        entity.setCommentUsername(dto.getCommentUsername());
         return entity;
     }
 }
