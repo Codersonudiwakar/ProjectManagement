@@ -20,14 +20,15 @@ public class CommentsServiceImpl implements CommentsService {
 
 	@Override
 	public Comments addComment(CommentsDto commentsDto) {
-		// TODO Auto-generated method stub
-		return null;
+		Comments cmt=mapper.dtoToEntityComments(commentsDto);
+		return commentsRepository.save(cmt);
 	}
 
 	@Override
 	public String deleteComment(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		commentsRepository.deleteById(id);
+		
+		return "Deleted Comments" ;
 	}
 
 }
