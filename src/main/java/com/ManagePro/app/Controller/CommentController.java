@@ -37,11 +37,10 @@ public class CommentController {
 //	    	return "Task Updated Successfully" ;
 //	    }
 	 
-	    @DeleteMapping("/tasks/{id}")
-	    public String deleteTask(@PathVariable long id) {
-	    	commentsService.deleteComment(id);
-	    	return "Delete task Sucessfully";
-	    }
-	 
-
+//	    @DeleteMapping("/tasks/{id}")
+//	    public String deleteTask(@PathVariable long id) {
+//	    	commentsService.deleteComment(id);
+//	    	return "Delete task Sucessfully";
+//	    }
+//	    
 }
