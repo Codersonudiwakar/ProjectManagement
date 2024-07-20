@@ -1,5 +1,8 @@
 package com.ManagePro.app.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +32,16 @@ public class CommentsServiceImpl implements CommentsService {
 		commentsRepository.deleteById(id);
 		
 		return "Deleted Comments" ;
+	}
+
+	@Override
+	public List<CommentsDto> getAllCommentsTask(String taskId) {
+		List<Comments> commentList=commentsRepository.getCommentsByTaksId(taskId);
+		List<CommentsDto> commentsDtoList= new ArrayList<CommentsDto>();
+		for (Comments comments : commentList) {
+			commentsDtoList.add(mapper.entityToDtoComments(comments));
+		}
+		return commentsDtoList;
 	}
 
 }
