@@ -15,7 +15,6 @@ public class TaskMapper {
         if (entity == null) {
             return null;
         }
-
         TaskDto dto = new TaskDto();
         dto.setTaskID(entity.getTaskID());
         dto.setTaskTitle(entity.getTaskTitle());

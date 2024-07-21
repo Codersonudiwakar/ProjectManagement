@@ -39,6 +39,12 @@ public class CommentController {
 	        return listCommenst;
 	    }
 	 
+	 @DeleteMapping("comDelete/{id}")
+	 public String deleteComment(@PathVariable long id) {
+		commentsService.deleteComment(id);
+		 return "Comments Deleted Successfully";
+	 }
+	 
 	 
 		 
 
