@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ManagePro.app.Dto.UserDto;
 import com.ManagePro.app.Service.TaskService;
 import com.ManagePro.app.Service.UserService;
 import com.ManagePro.app.entities.User;
@@ -32,15 +33,14 @@ public class UserController {
 	}
 
 	@GetMapping("/getUser")
-	public User getUserById(long id) {
-		// TODO Auto-generated method stub
+	public UserDto getUserById(long id) {
 		return userService.getUserById(id);
 	}
 
 	
 	@GetMapping("/allUser/{username}")
-	public List<User> getAllUsers(@PathVariable String username) {
-		List<User> userList=userService.getAllUsersByUsername(username);
+	public List<UserDto> getAllUsers(@PathVariable String username) {
+		List<UserDto> userList=userService.getAllUsersByUsername(username);
 		return userList;
 	}
 
