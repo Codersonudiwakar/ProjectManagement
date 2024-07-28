@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.ManagePro.app.entities.Comments;
 import com.ManagePro.app.entities.Task;
+import com.ManagePro.app.entities.User;
 
 
 @Component
@@ -72,6 +73,27 @@ public class TaskMapper {
         entity.setComments(dto.getComments());
         entity.setCreatedDate(dto.getCreatedDate());
         entity.setCommentUsername(dto.getCommentUsername());
+        return entity;
+    }
+    
+    public static UserDto entityToDtoUser(User entity) {
+    	UserDto dto = new UserDto();
+    	dto.setUserId(entity.getUserId());
+    	dto.setUserName(entity.getUserName());
+    	dto.setEmail(entity.getEmail());
+    	dto.setUserPassword(entity.getUserPassword());
+    	dto.setUserProfile(entity.getUserProfile());
+        return dto;
+    }
+
+    // DTO to Entity
+    public static User dtoToEntityUser(UserDto dto) {
+    	User entity = new User();
+    	entity.setUserId(dto.getUserId());
+    	entity.setUserName(dto.getUserName());
+    	entity.setEmail(dto.getEmail());
+    	entity.setUserPassword(dto.getUserPassword());
+    	entity.setUserProfile(dto.getUserProfile());
         return entity;
     }
 }

@@ -1,14 +1,7 @@
-package com.ManagePro.app.entities;
+package com.ManagePro.app.Dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class User {
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserDto {
+	
 	private long userId;
 	private String userName;
 	private String email;
@@ -16,11 +9,11 @@ public class User {
 	private String userPassword;
 	
 	
-	public User() {
+	public UserDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(long userId, String userName, String email, String userProfile, String userPassword) {
+	public UserDto(long userId, String userName, String email, String userProfile, String userPassword) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
